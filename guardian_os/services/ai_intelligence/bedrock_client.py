@@ -1,0 +1,424 @@
+"""
+GUARDIAN OS — Amazon Bedrock Client
+
+Provides the AI inference boundary for Guardian OS.
+
+Design principles:
+- Core Guardian logic remains independent of AWS.
+- Bedrock is used for explanation/recommendation generation.
+- Deterministic risk and intervention calculations are never delegated
+  to the LLM.
+- Local mock mode allows BUILD IT development without AWS credentials.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+from dataclasses import dataclass
+from typing import Any, Optional
+
+
+DEFAULT_MODEL_ID = os.getenv(
+    "GUARDIAN_BEDROCK_MODEL_ID",
+    "amazon.nova-lite-v1:0",
+)
+
+DEFAULT_REGION = os.getenv(
+    "AWS_REGION",
+    "us-east-1",
+)
+
+
+class BedrockClientError(Exception):
+    """Base exception for Guardian OS Bedrock errors."""
+
+
+class BedrockConfigurationError(BedrockClientError):
+    """Raised when Bedrock configuration is invalid."""
+
+
+class BedrockInvocationError(BedrockClientError):
+    """Raised when a Bedrock invocation fails."""
+
+
+@dataclass(frozen=True)
+class BedrockResponse:
+    """
+    Normalized response returned by the Bedrock client.
+    """
+
+    text: str
+    model_id: str
+    request_id: Optional[str]
+    usage: dict[str, Any]
+    raw_response: Optional[dict[str, Any]] = None
+
+
+class BedrockClient:
+    """
+    Thin abstraction around Amazon Bedrock Runtime.
+
+    The client supports two modes:
+
+    MOCK
+        Local development mode. No AWS credentials required.
+
+    AWS
+        Real Amazon Bedrock Runtime invocation.
+    """
+
+    def __init__(
+        self,
+        model_id: str = DEFAULT_MODEL_ID,
+        region_name: str = DEFAULT_REGION,
+        mock_mode: Optional[bool] = None,
+    ) -> None:
+
+        self.model_id = model_id
+        self.region_name = region_name
+
+        if mock_mode is None:
+            mock_mode = (
+                os.getenv(
+                    "GUARDIAN_BEDROCK_MOCK",
+                    "true",
+                ).lower()
+                == "true"
+            )
+
+        self.mock_mode = mock_mode
+        self._client = None
+
+        if not self.mock_mode:
+            self._initialize_aws_client()
+
+    def _initialize_aws_client(self) -> None:
+        """
+        Initialize the Amazon Bedrock Runtime client lazily.
+
+        boto3 is imported only when real AWS mode is requested.
+        """
+
+        try:
+            import boto3
+        except ImportError as exc:
+            raise BedrockConfigurationError(
+                "boto3 is required for real Bedrock mode. "
+                "Install boto3 or enable GUARDIAN_BEDROCK_MOCK=true."
+            ) from exc
+
+        try:
+            self._client = boto3.client(
+                "bedrock-runtime",
+                region_name=self.region_name,
+            )
+        except Exception as exc:
+            raise BedrockConfigurationError(
+                f"Unable to initialize Bedrock Runtime client "
+                f"in region '{self.region_name}'."
+            ) from exc
+
+    def invoke(
+        self,
+        prompt: str,
+        *,
+        max_tokens: int = 1000,
+        temperature: float = 0.2,
+        system_prompt: Optional[str] = None,
+    ) -> BedrockResponse:
+        """
+        Invoke Bedrock or the local mock provider.
+
+        Parameters
+        ----------
+        prompt:
+            User/context prompt supplied to the model.
+
+        max_tokens:
+            Maximum generated token budget.
+
+        temperature:
+            Sampling temperature.
+
+        system_prompt:
+            Optional system instruction.
+
+        Returns
+        -------
+        BedrockResponse
+            Normalized model response.
+        """
+
+        self._validate_request(
+            prompt=prompt,
+            max_tokens=max_tokens,
+            temperature=temperature,
+        )
+
+        if self.mock_mode:
+            return self._mock_invoke(prompt)
+
+        return self._aws_invoke(
+            prompt=prompt,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            system_prompt=system_prompt,
+        )
+
+    def _validate_request(
+        self,
+        *,
+        prompt: str,
+        max_tokens: int,
+        temperature: float,
+    ) -> None:
+
+        if not isinstance(prompt, str) or not prompt.strip():
+            raise ValueError("Prompt must be a non-empty string.")
+
+        if max_tokens <= 0:
+            raise ValueError("max_tokens must be greater than zero.")
+
+        if not 0.0 <= temperature <= 1.0:
+            raise ValueError(
+                "temperature must be between 0.0 and 1.0."
+            )
+
+    def _mock_invoke(self, prompt: str) -> BedrockResponse:
+        """
+        Deterministic local response used during BUILD IT development.
+
+        This is deliberately transparent: the response identifies itself
+        as mock output and does not pretend to be generated by Bedrock.
+        """
+
+        prompt_lower = prompt.lower()
+
+        if "recommendation" in prompt_lower:
+            text = (
+                "MOCK AI RECOMMENDATION: "
+                "Use the deterministic Guardian OS intervention result "
+                "as the operational recommendation. Human review is "
+                "required before production execution."
+            )
+        else:
+            text = (
+                "MOCK AI EXPLANATION: "
+                "Guardian OS detected an operational disruption and "
+                "generated this explanation from deterministic risk, "
+                "simulation, and outcome data. No real-world operational "
+                "data was used."
+            )
+
+        return BedrockResponse(
+            text=text,
+            model_id="GUARDIAN_MOCK_MODEL",
+            request_id=None,
+            usage={
+                "mode": "mock",
+                "prompt_characters": len(prompt),
+            },
+            raw_response=None,
+        )
+
+    def _aws_invoke(
+        self,
+        *,
+        prompt: str,
+        max_tokens: int,
+        temperature: float,
+        system_prompt: Optional[str],
+    ) -> BedrockResponse:
+        """
+        Invoke Amazon Bedrock Runtime.
+
+        This implementation uses the Amazon Nova request format.
+        """
+
+        if self._client is None:
+            raise BedrockConfigurationError(
+                "Bedrock client is not initialized."
+            )
+
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "text": prompt,
+                    }
+                ],
+            }
+        ]
+
+        request_body: dict[str, Any] = {
+            "messages": messages,
+            "inferenceConfig": {
+                "maxTokens": max_tokens,
+                "temperature": temperature,
+            },
+        }
+
+        if system_prompt:
+            request_body["system"] = [
+                {
+                    "text": system_prompt,
+                }
+            ]
+
+        try:
+            response = self._client.invoke_model(
+                modelId=self.model_id,
+                body=json.dumps(request_body),
+                contentType="application/json",
+                accept="application/json",
+            )
+        except Exception as exc:
+            raise BedrockInvocationError(
+                f"Bedrock invocation failed for model "
+                f"'{self.model_id}'."
+            ) from exc
+
+        return self._parse_aws_response(response)
+
+    def _parse_aws_response(
+        self,
+        response: dict[str, Any],
+    ) -> BedrockResponse:
+        """
+        Normalize the Amazon Nova response.
+        """
+
+        try:
+            body = response["body"]
+
+            if hasattr(body, "read"):
+                body = body.read()
+
+            if isinstance(body, bytes):
+                body = body.decode("utf-8")
+
+            payload = json.loads(body)
+
+            output = payload["output"]
+            message = output["message"]
+            content = message["content"]
+
+            text_parts = []
+
+            for item in content:
+                if "text" in item:
+                    text_parts.append(item["text"])
+
+            text = "\n".join(text_parts).strip()
+
+            if not text:
+                raise ValueError(
+                    "Bedrock response contained no text output."
+                )
+
+            usage = payload.get("usage", {})
+
+            return BedrockResponse(
+                text=text,
+                model_id=self.model_id,
+                request_id=response.get(
+                    "ResponseMetadata",
+                    {},
+                ).get("RequestId"),
+                usage=usage,
+                raw_response=payload,
+            )
+
+        except (KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
+            raise BedrockInvocationError(
+                "Unable to parse the Bedrock response."
+            ) from exc
+
+
+def create_bedrock_client(
+    *,
+    model_id: str = DEFAULT_MODEL_ID,
+    region_name: str = DEFAULT_REGION,
+    mock_mode: Optional[bool] = None,
+) -> BedrockClient:
+    """
+    Factory function for creating the Guardian OS Bedrock client.
+    """
+
+    return BedrockClient(
+        model_id=model_id,
+        region_name=region_name,
+        mock_mode=mock_mode,
+    )
+
+
+if __name__ == "__main__":
+
+    print("=" * 70)
+    print("GUARDIAN OS — BEDROCK CLIENT TEST")
+    print("=" * 70)
+
+    print("\nLOCAL MOCK MODE")
+    print("-" * 70)
+
+    client = create_bedrock_client(
+        mock_mode=True,
+    )
+
+    response = client.invoke(
+        """
+        Guardian OS detected a synthetic station capacity shock
+        at CHN-017. Current utilization is 102.50% and risk is
+        72.77/100. The deterministic decision engine selected
+        HYBRID_RESPONSE.
+        """,
+    )
+
+    print(f"Mode: MOCK")
+    print(f"Model: {response.model_id}")
+    print(f"Request ID: {response.request_id}")
+    print(f"Response: {response.text}")
+
+    print("\nREQUEST VALIDATION")
+    print("-" * 70)
+
+    try:
+        client.invoke("")
+        print("Empty prompt validation: FAILED")
+    except ValueError:
+        print("Empty prompt validation: PASSED")
+
+    try:
+        client.invoke(
+            "test",
+            temperature=2.0,
+        )
+        print("Temperature validation: FAILED")
+    except ValueError:
+        print("Temperature validation: PASSED")
+
+    print("\nFACTORY TEST")
+    print("-" * 70)
+
+    factory_client = create_bedrock_client(
+        mock_mode=True,
+    )
+
+    print(
+        f"Factory created client: "
+        f"{isinstance(factory_client, BedrockClient)}"
+    )
+
+    print("\nARCHITECTURE CHECK")
+    print("-" * 70)
+    print("Deterministic risk calculation: OUTSIDE BEDROCK")
+    print("Simulation calculation: OUTSIDE BEDROCK")
+    print("Intervention execution: OUTSIDE BEDROCK")
+    print("AI inference boundary: BEDROCK CLIENT")
+    print("Local BUILD IT mode: AVAILABLE")
+
+    print("\n" + "=" * 70)
+    print("BEDROCK CLIENT TEST COMPLETE")
+    print("=" * 70)

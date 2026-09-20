@@ -1,0 +1,119 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Description: >
+  AEGIS - Proactive Last-Mile Risk and Workload Intelligence
+  serverless control plane.
+
+Globals:
+  Function:
+    Timeout: 60
+    MemorySize: 1024
+    Runtime: python3.12
+    Architectures:
+      - arm64
+
+Resources:
+
+  AegisStateTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: aegis-state
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: assessment_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: assessment_id
+          KeyType: HASH
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+
+  AegisHttpApi:
+    Type: AWS::Serverless::HttpApi
+
+    Properties:
+      StageName: '$default'
+
+      DefinitionBody:
+        openapi: '3.0.1'
+        info:
+          title: AEGIS Control Plane API
+          version: '1.0'
+        paths: {}
+
+      CorsConfiguration:
+        AllowOrigins:
+          - '*'
+        AllowHeaders:
+          - Content-Type
+          - Authorization
+          - X-Requested-With
+        AllowMethods:
+          - GET
+          - POST
+          - OPTIONS
+        MaxAge: 600
+
+  AegisApiFunction:
+    Type: AWS::Serverless::Function
+
+    Properties:
+      FunctionName: aegis-control-plane
+      CodeUri: ../
+      Handler: lambda_adapter.handler
+
+      Environment:
+        Variables:
+          AEGIS_STATE_TABLE: !Ref AegisStateTable
+
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref AegisStateTable
+
+      Events:
+
+        Health:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref AegisHttpApi
+            Path: /api/v1/health
+            Method: GET
+
+        AssessEvent:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref AegisHttpApi
+            Path: /api/v1/events/assess
+            Method: POST
+
+        GetAssessment:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref AegisHttpApi
+            Path: /api/v1/assessments/{assessment_id}
+            Method: GET
+
+        ApproveAssessment:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref AegisHttpApi
+            Path: /api/v1/assessments/{assessment_id}/approve
+            Method: POST
+
+        ProcessEvent:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref AegisHttpApi
+            Path: /api/v1/events/process
+            Method: POST
+
+Outputs:
+
+  AegisApiUrl:
+    Description: AEGIS API Gateway endpoint
+    Value: !Sub "https://${AegisHttpApi}.execute-api.${AWS::Region}.amazonaws.com"
+
+  AegisStateTableName:
+    Description: AEGIS persistent assessment state table
+    Value: !Ref AegisStateTable

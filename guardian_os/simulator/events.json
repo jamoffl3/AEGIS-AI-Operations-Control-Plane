@@ -1,0 +1,21 @@
+[
+  {
+    "event_id": "EVT-0001",
+    "event_type": "STATION_CAPACITY_SHOCK",
+    "timestamp": "2026-09-18T10:30:00Z",
+    "source": "GUARDIAN_SIMULATOR",
+    "station": {
+      "station_id": "CHN-017",
+      "city": "Chennai",
+      "region": "Tamil Nadu"
+    },
+    "impact": {
+      "severity": "HIGH",
+      "capacity_change_percent": -20,
+      "description": "Synthetic station capacity disruption"
+    },
+    "metadata": {
+      "simulation": true
+    }
+  }
+]

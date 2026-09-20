@@ -1,0 +1,5003 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+
+
+
+<head>
+
+
+
+    <meta charset="UTF-8">
+
+
+    <meta
+
+
+
+        name="viewport"
+
+
+
+        content="width=device-width, initial-scale=1.0"
+
+
+
+    >
+
+
+    <meta
+
+
+
+        name="theme-color"
+
+
+
+        content="#0b0f14"
+
+
+
+    >
+
+
+    <meta
+
+
+
+        name="description"
+
+
+
+        content="AEGIS — Last-Mile Operations Control Tower"
+
+
+
+    >
+
+
+    <title>
+
+
+
+        AEGIS — Last-Mile Operations Control Tower
+
+
+
+    </title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link
+
+
+
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+
+
+
+        rel="stylesheet"
+
+
+
+    >
+
+
+    <link rel="stylesheet" href="styles.css?v=20260919">
+
+
+
+</head>
+
+
+<body>
+
+
+<!-- ============================================================
+
+
+
+     PRODUCT ENTRY / BOOT SCREEN
+
+
+
+     ============================================================ -->
+
+
+<div
+
+
+
+    id="productEntry"
+
+
+
+    class="product-entry"
+
+
+
+>
+
+
+    <div class="entry-grid"></div>
+
+
+
+    <div class="entry-glow entry-glow-one"></div>
+
+
+
+    <div class="entry-glow entry-glow-two"></div>
+
+
+    <div class="entry-topbar">
+
+
+        <div class="brand-lockup">
+
+
+
+            <div class="brand-mark">
+
+
+
+                A
+
+
+
+            </div>
+
+
+            <div>
+
+
+
+                <div class="brand-name">
+
+
+
+                    AEGIS
+
+
+
+                </div>
+
+
+                <div class="brand-subtitle">
+
+
+
+                    OPERATIONS INTELLIGENCE
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+        <div class="amazon-entry-context" style="display:flex;align-items:center;gap:9px;margin-left:auto;margin-right:18px;">
+
+            <img
+
+                src="./assets/amazon-logo.png"
+
+                alt="Amazon"
+
+                style="width:68px;height:auto;max-height:24px;object-fit:contain;display:block;"
+
+            >
+
+            <span style="color:#7f8b98;font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:0.08em;white-space:nowrap;">
+
+                FIRST COMMIT 2026
+
+            </span>
+
+        </div>
+
+
+
+        <div class="entry-system-state">
+
+
+
+            <span class="status-dot"></span>
+
+
+
+            LOCAL CONTROL PLANE
+
+
+
+            <span class="system-divider">/</span>
+
+
+
+            BUILD 0.2.0
+
+
+
+        </div>
+
+
+    </div>
+
+
+    <main class="entry-main">
+
+
+        <div class="entry-kicker">
+
+
+
+            <span class="kicker-line"></span>
+
+
+
+            LAST-MILE OPERATIONS CONTROL TOWER
+
+
+
+            <span class="kicker-line"></span>
+
+
+
+        </div>
+
+
+        <h1 class="entry-title">
+
+
+
+            <span>AEGIS</span>
+
+
+
+            <span class="entry-title-accent">OS</span>
+
+
+
+        </h1>
+
+
+        <p class="entry-description">
+
+
+
+            Proactive disruption intelligence for
+
+
+
+            high-scale delivery networks.
+
+
+
+        </p>
+
+
+        <div class="entry-control-loop">
+
+
+            <div class="entry-loop-node">
+
+
+
+                <span>01</span>
+
+
+
+                SENSE
+
+
+
+            </div>
+
+
+            <div class="entry-loop-line"></div>
+
+
+            <div class="entry-loop-node">
+
+
+
+                <span>02</span>
+
+
+
+                SIMULATE
+
+
+
+            </div>
+
+
+            <div class="entry-loop-line"></div>
+
+
+            <div class="entry-loop-node">
+
+
+
+                <span>03</span>
+
+
+
+                DECIDE
+
+
+
+            </div>
+
+
+            <div class="entry-loop-line"></div>
+
+
+            <div class="entry-loop-node">
+
+
+
+                <span>04</span>
+
+
+
+                ACT
+
+
+
+            </div>
+
+
+            <div class="entry-loop-line"></div>
+
+
+            <div class="entry-loop-node">
+
+
+
+                <span>05</span>
+
+
+
+                MEASURE
+
+
+
+            </div>
+
+
+        </div>
+
+
+        <button
+
+
+
+            id="enterControlTower"
+
+
+
+            class="entry-enter-button"
+
+
+
+            type="button"
+
+
+
+        >
+
+
+            <span>
+
+
+
+                ENTER CONTROL TOWER
+
+
+
+            </span>
+
+
+            <span class="entry-arrow">
+
+
+
+                →
+
+
+
+            </span>
+
+
+        </button>
+
+
+        <div class="entry-footnote">
+
+
+
+            SYNTHETIC NETWORK SIMULATION
+
+
+
+            <span>•</span>
+
+
+
+            HUMAN-IN-THE-LOOP
+
+
+
+            <span>•</span>
+
+
+
+            AWS READY
+
+
+
+        </div>
+
+
+    </main>
+
+
+    <div class="entry-bottom">
+
+
+        <div>
+
+
+
+            AEGIS / COMMAND SYSTEM
+
+
+
+        </div>
+
+
+        <div>
+
+
+
+            CHENNAI NETWORK SIMULATION
+
+
+
+        </div>
+
+
+        <div>
+
+
+
+            19 SEP 2026
+
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- ============================================================
+
+
+
+     APPLICATION SHELL
+
+
+
+     ============================================================ -->
+
+
+<div
+
+
+
+    id="guardianApp"
+
+
+
+    class="guardian-app is-hidden"
+
+
+
+>
+
+
+    <!-- ========================================================
+
+
+
+         SIDEBAR
+
+
+
+         ======================================================== -->
+
+
+    <aside class="sidebar">
+
+
+        <div class="sidebar-brand">
+
+
+            <div class="brand-mark">
+
+
+
+                A
+
+
+
+            </div>
+
+
+            <div class="sidebar-brand-copy">
+
+
+                <strong>
+
+
+
+                    AEGIS
+
+
+
+                </strong>
+
+
+                <span>
+
+
+
+                    OPERATIONS OS
+
+
+
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="amazon-context" style="display:flex;align-items:center;gap:10px;margin:0 16px 14px;padding:11px 10px;border-bottom:1px solid rgba(255,255,255,0.08);">
+
+
+
+            <img
+
+                src="./assets/amazon-logo.png"
+
+                alt="Amazon"
+
+                style="width:72px;height:auto;max-height:28px;object-fit:contain;object-position:left center;display:block;"
+
+            >
+
+
+
+            <div style="display:flex;flex-direction:column;gap:3px;min-width:0;">
+
+                <strong style="color:#e8edf3;font-family:'JetBrains Mono',monospace;font-size:8px;line-height:1.2;letter-spacing:0.08em;font-weight:700;">
+
+                    FIRST COMMIT 2026
+
+                </strong>
+
+                <span style="color:#7f8b98;font-family:'JetBrains Mono',monospace;font-size:7px;line-height:1.2;letter-spacing:0.06em;">
+
+                    AWS BUILD / SHIP
+
+                </span>
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="sidebar-environment">
+
+
+            <span class="status-dot"></span>
+
+
+            <div>
+
+
+
+                <strong>
+
+
+
+                    CONTROL PLANE
+
+
+
+                </strong>
+
+
+                <small>
+
+
+
+                    LOCAL / SIMULATION
+
+
+
+                </small>
+
+
+
+            </div>
+
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+
+            <div class="nav-section-label">
+
+
+
+                OPERATIONS
+
+
+
+            </div>
+
+
+            <button
+
+
+
+                class="nav-item active"
+
+
+
+                type="button"
+
+
+
+            >
+
+
+
+                <span class="nav-icon">◈</span>
+
+
+
+                <span>Command Center</span>
+
+
+
+            </button>
+
+
+            <button
+
+
+
+                class="nav-item"
+
+
+
+                type="button"
+
+
+
+            >
+
+
+
+                <span class="nav-icon">⚠</span>
+
+
+
+                <span>Active Events</span>
+
+
+
+                <span class="nav-count">01</span>
+
+
+
+            </button>
+
+
+            <button
+
+
+
+                class="nav-item"
+
+
+
+                type="button"
+
+
+
+            >
+
+
+
+                <span class="nav-icon">◎</span>
+
+
+
+                <span>Network Risk</span>
+
+
+
+            </button>
+
+
+            <button
+
+
+
+                class="nav-item"
+
+
+
+                type="button"
+
+
+
+            >
+
+
+
+                <span class="nav-icon">⌁</span>
+
+
+
+                <span>Capacity &amp; Workload</span>
+
+
+
+            </button>
+
+
+            <div class="nav-section-label">
+
+
+
+                INTELLIGENCE
+
+
+
+            </div>
+
+
+            <button
+
+
+
+                class="nav-item"
+
+
+
+                type="button"
+
+
+
+            >
+
+
+
+                <span class="nav-icon">◇</span>
+
+
+
+                <span>Risk Intelligence</span>
+
+
+
+            </button>
+
+
+            <button
+
+
+
+                class="nav-item"
+
+
+
+                type="button"
+
+
+
+            >
+
+
+
+                <span class="nav-icon">△</span>
+
+
+
+                <span>Simulations</span>
+
+
+
+            </button>
+
+
+            <button
+
+
+
+                class="nav-item"
+
+
+
+                type="button"
+
+
+
+            >
+
+
+
+                <span class="nav-icon">✦</span>
+
+
+
+                <span>AI Decision Engine</span>
+
+
+
+            </button>
+
+
+            <div class="nav-section-label">
+
+
+
+                CONTROL
+
+
+
+            </div>
+
+
+            <button
+
+
+
+                class="nav-item"
+
+
+
+                type="button"
+
+
+
+            >
+
+
+
+                <span class="nav-icon">⇄</span>
+
+
+
+                <span>Interventions</span>
+
+
+
+            </button>
+
+
+            <button
+
+
+
+                class="nav-item"
+
+
+
+                type="button"
+
+
+
+            >
+
+
+
+                <span class="nav-icon">✓</span>
+
+
+
+                <span>Outcomes</span>
+
+
+
+            </button>
+
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+
+            <div class="sidebar-footer-title">
+
+
+
+                PLATFORM
+
+
+
+            </div>
+
+
+            <div class="sidebar-service">
+
+
+
+                <span class="service-dot"></span>
+
+
+
+                API CONTROL PLANE
+
+
+
+            </div>
+
+
+            <div class="sidebar-service">
+
+
+
+                <span class="service-dot"></span>
+
+
+
+                SIMULATION ENGINE
+
+
+
+            </div>
+
+
+            <div class="sidebar-service service-pending">
+
+
+
+                <span class="service-dot"></span>
+
+
+
+                AWS INTEGRATION
+
+
+
+                <span class="pending-label">
+
+
+
+                    NEXT
+
+
+
+                </span>
+
+
+
+            </div>
+
+
+        </div>
+
+
+    </aside>
+
+
+    <!-- ========================================================
+
+
+
+         MAIN CONTENT
+
+
+
+         ======================================================== -->
+
+
+    <main class="main-content">
+
+
+        <!-- ====================================================
+
+
+
+             TOP COMMAND BAR
+
+
+
+             ==================================================== -->
+
+
+        <header class="command-header">
+
+
+            <div class="command-header-left">
+
+
+                <div class="breadcrumb">
+
+
+
+                    AEGIS
+
+
+
+                    <span>/</span>
+
+
+
+                    COMMAND CENTER
+
+
+
+                </div>
+
+
+                <h2>
+
+
+
+                    Last-Mile Operations
+
+
+
+                </h2>
+
+
+            </div>
+
+
+            <div class="command-header-right">
+
+
+                <div class="header-system">
+
+
+                    <div class="header-system-item">
+
+
+
+                        <span class="status-dot"></span>
+
+
+
+                        API
+
+
+
+                    </div>
+
+
+                    <div class="header-system-item">
+
+
+
+                        <span class="status-dot"></span>
+
+
+
+                        CONTROL PLANE
+
+
+
+                    </div>
+
+
+                    <div class="header-system-item service-future">
+
+
+
+                        <span class="status-dot"></span>
+
+
+
+                        AWS
+
+
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+
+
+
+                    id="refreshButton"
+
+
+
+                    class="refresh-button"
+
+
+
+                    type="button"
+
+
+
+                >
+
+
+
+                    ↻ Refresh
+
+
+
+                </button>
+
+
+            </div>
+
+
+        </header>
+
+
+        <!-- ====================================================
+
+
+
+             COMMAND HERO
+
+
+
+             ==================================================== -->
+
+
+        <section class="command-hero">
+
+
+            <div class="hero-copy">
+
+
+                <div class="hero-kicker">
+
+
+
+                    NETWORK COMMAND OVERVIEW
+
+
+
+                </div>
+
+
+                <h1>
+
+
+
+                    Proactive control
+
+
+
+                    <span>before disruption propagates.</span>
+
+
+
+                </h1>
+
+
+                <p>
+
+
+
+                    Aegis continuously assesses operational
+
+
+
+                    state, evaluates counterfactual interventions,
+
+
+
+                    and routes execution through human approval.
+
+
+
+                </p>
+
+
+            </div>
+
+
+            <div class="hero-meta">
+
+
+                <div class="hero-meta-row">
+
+
+
+                    <span>NETWORK</span>
+
+
+
+                    <strong>INDIA / SIMULATION</strong>
+
+
+
+                </div>
+
+
+                <div class="hero-meta-row">
+
+
+
+                    <span>CONTROL STATUS</span>
+
+
+
+                    <strong id="controlStatus">
+
+
+
+                        INITIALIZING
+
+
+
+                    </strong>
+
+
+
+                </div>
+
+
+                <div class="hero-meta-row">
+
+
+
+                    <span>ACTIVE NODE</span>
+
+
+
+                    <strong>
+
+
+
+                        CHN-017
+
+
+
+                    </strong>
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ====================================================
+
+
+
+             NETWORK TELEMETRY
+
+
+
+             ==================================================== -->
+
+
+        <section class="telemetry-strip">
+
+
+            <div class="telemetry-item">
+
+
+                <span class="telemetry-label">
+
+
+
+                    NETWORK HEALTH
+
+
+
+                </span>
+
+
+                <strong class="telemetry-value">
+
+
+
+                    94.2<span>%</span>
+
+
+
+                </strong>
+
+
+                <small>
+
+
+
+                    SIMULATED NETWORK
+
+
+
+                </small>
+
+
+            </div>
+
+
+            <div class="telemetry-item">
+
+
+                <span class="telemetry-label">
+
+
+
+                    ACTIVE EVENTS
+
+
+
+                </span>
+
+
+                <strong class="telemetry-value">
+
+
+
+                    01
+
+
+
+                </strong>
+
+
+                <small>
+
+
+
+                    HIGH PRIORITY
+
+
+
+                </small>
+
+
+            </div>
+
+
+            <div class="telemetry-item telemetry-alert">
+
+
+                <span class="telemetry-label">
+
+
+
+                    NETWORK RISK
+
+
+
+                </span>
+
+
+                <strong
+
+
+
+                    id="networkRisk"
+
+
+
+                    class="telemetry-value"
+
+
+
+                >
+
+
+
+                    —
+
+
+
+                </strong>
+
+
+                <small id="networkRiskStatus">
+
+
+
+                    ANALYZING
+
+
+
+                </small>
+
+
+            </div>
+
+
+            <div class="telemetry-item">
+
+
+                <span class="telemetry-label">
+
+
+
+                    LOAD AT RISK
+
+
+
+                </span>
+
+
+                <strong
+
+
+
+                    id="currentLoad"
+
+
+
+                    class="telemetry-value"
+
+
+
+                >
+
+
+
+                    —
+
+
+
+                </strong>
+
+
+                <small>
+
+
+
+                    ACTIVE ORDERS
+
+
+
+                </small>
+
+
+            </div>
+
+
+            <div class="telemetry-item">
+
+
+                <span class="telemetry-label">
+
+
+
+                    UTILIZATION
+
+
+
+                </span>
+
+
+                <strong
+
+
+
+                    id="networkUtilization"
+
+
+
+                    class="telemetry-value"
+
+
+
+                >
+
+
+
+                    —
+
+
+
+                </strong>
+
+
+                <small>
+
+
+
+                    ACTIVE NODE
+
+
+
+                </small>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ====================================================
+
+
+
+             NETWORK / INCIDENT
+
+
+
+             ==================================================== -->
+
+
+        <section class="overview-grid">
+
+
+            <article class="network-panel panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+
+                        <span class="panel-kicker">
+
+
+
+                            NETWORK GRAPH
+
+
+
+                        </span>
+
+
+                        <h2>
+
+
+
+                            Live Network Topology
+
+
+
+                        </h2>
+
+
+                    </div>
+
+
+                    <div class="panel-status">
+
+
+
+                        <span class="status-dot"></span>
+
+
+
+                        LIVE STATE
+
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="network-canvas">
+
+
+                    <div class="network-grid"></div>
+
+
+                    <svg
+
+
+
+                        class="network-svg"
+
+
+
+                        viewBox="0 0 720 360"
+
+
+
+                        preserveAspectRatio="none"
+
+
+
+                    >
+
+
+                        <line
+
+
+
+                            x1="90"
+
+
+
+                            y1="90"
+
+
+
+                            x2="245"
+
+
+
+                            y2="165"
+
+
+
+                        />
+
+
+                        <line
+
+
+
+                            x1="245"
+
+
+
+                            y1="165"
+
+
+
+                            x2="390"
+
+
+
+                            y2="80"
+
+
+
+                        />
+
+
+                        <line
+
+
+
+                            x1="245"
+
+
+
+                            y1="165"
+
+
+
+                            x2="410"
+
+
+
+                            y2="260"
+
+
+
+                        />
+
+
+                        <line
+
+
+
+                            x1="390"
+
+
+
+                            y1="80"
+
+
+
+                            x2="575"
+
+
+
+                            y2="155"
+
+
+
+                        />
+
+
+                        <line
+
+
+
+                            x1="410"
+
+
+
+                            y1="260"
+
+
+
+                            x2="575"
+
+
+
+                            y2="155"
+
+
+
+                        />
+
+
+                        <line
+
+
+
+                            x1="575"
+
+
+
+                            y1="155"
+
+
+
+                            x2="665"
+
+
+
+                            y2="260"
+
+
+
+                        />
+
+
+                    </svg>
+
+
+                    <div class="network-node node-1">
+
+
+
+                        <span></span>
+
+
+
+                        <small>DEL</small>
+
+
+
+                    </div>
+
+
+                    <div class="network-node node-2">
+
+
+
+                        <span></span>
+
+
+
+                        <small>BLR</small>
+
+
+
+                    </div>
+
+
+                    <div class="network-node node-3">
+
+
+
+                        <span></span>
+
+
+
+                        <small>HYD</small>
+
+
+
+                    </div>
+
+
+                    <div class="network-node node-4">
+
+
+
+                        <span></span>
+
+
+
+                        <small>MAA</small>
+
+
+
+                    </div>
+
+
+                    <div class="network-node node-5 network-node-critical">
+
+
+
+                        <span></span>
+
+
+
+                        <small>CHN-017</small>
+
+
+
+                    </div>
+
+
+                    <div class="network-node node-6">
+
+
+
+                        <span></span>
+
+
+
+                        <small>CBE</small>
+
+
+
+                    </div>
+
+
+                    <div class="network-incident-callout">
+
+
+                        <span class="callout-line"></span>
+
+
+                        <div>
+
+
+
+                            <strong>
+
+
+
+                                CHN-017
+
+
+
+                            </strong>
+
+
+                            <small>
+
+
+
+                                CAPACITY SHOCK
+
+
+
+                            </small>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="network-footer">
+
+
+                    <div>
+
+
+
+                        <span class="legend-dot healthy"></span>
+
+
+
+                        HEALTHY
+
+
+
+                    </div>
+
+
+                    <div>
+
+
+
+                        <span class="legend-dot degraded"></span>
+
+
+
+                        DEGRADED
+
+
+
+                    </div>
+
+
+                    <div>
+
+
+
+                        <span class="legend-dot critical"></span>
+
+
+
+                        HIGH RISK
+
+
+
+                    </div>
+
+
+                    <div class="network-footer-right">
+
+
+
+                        6 NODES / 8 ROUTES
+
+
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+            <article class="incident-panel panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+
+                        <span class="panel-kicker">
+
+
+
+                            INCIDENT COMMAND
+
+
+
+                        </span>
+
+
+                        <h2>
+
+
+
+                            Active Disruption
+
+
+
+                        </h2>
+
+
+                    </div>
+
+
+                    <span
+
+
+
+                        id="severityBadge"
+
+
+
+                        class="severity-badge"
+
+
+
+                    >
+
+
+
+                        HIGH
+
+
+
+                    </span>
+
+
+                </div>
+
+
+                <div class="incident-id">
+
+
+
+                    EVT-UI-0001
+
+
+
+                    <span>•</span>
+
+
+
+                    STATION EVENT
+
+
+
+                </div>
+
+
+                <h3 id="eventTitle">
+
+
+
+                    Station Capacity Shock
+
+
+
+                </h3>
+
+
+                <div class="incident-location">
+
+
+                    <span>CHN-017</span>
+
+
+                    <span>•</span>
+
+
+                    <span id="stationCity">
+
+
+
+                        Chennai
+
+
+
+                    </span>
+
+
+                    <span>•</span>
+
+
+                    <span id="stationRegion">
+
+
+
+                        Tamil Nadu
+
+
+
+                    </span>
+
+
+                </div>
+
+
+                <div class="incident-risk">
+
+
+                    <div>
+
+
+                        <span>
+
+
+
+                            CURRENT RISK
+
+
+
+                        </span>
+
+
+                        <strong>
+
+
+
+                            <span id="riskScore">
+
+
+
+                                —
+
+
+
+                            </span>
+
+
+
+                        </strong>
+
+
+                    </div>
+
+
+                    <div class="risk-ring">
+
+
+                        <div class="risk-ring-inner">
+
+
+
+                            <span id="networkRisk">
+
+
+
+                                —
+
+
+
+                            </span>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="risk-bar-container">
+
+
+                    <div class="risk-bar-track">
+
+
+                        <div
+
+
+
+                            id="riskBar"
+
+
+
+                            class="risk-bar"
+
+
+
+                            style="width: 0%"
+
+
+
+                        ></div>
+
+
+                    </div>
+
+
+                    <div class="risk-bar-labels">
+
+
+
+                        <span>0</span>
+
+
+
+                        <span>50</span>
+
+
+
+                        <span>100</span>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="incident-metrics">
+
+
+                    <div>
+
+
+
+                        <span>CAPACITY</span>
+
+
+
+                        <strong id="capacity">
+
+
+
+                            —
+
+
+
+                        </strong>
+
+
+
+                    </div>
+
+
+                    <div>
+
+
+
+                        <span>CURRENT LOAD</span>
+
+
+
+                        <strong id="currentLoad">
+
+
+
+                            —
+
+
+
+                        </strong>
+
+
+
+                    </div>
+
+
+                    <div>
+
+
+
+                        <span>ACTIVE ROUTES</span>
+
+
+
+                        <strong id="activeRoutes">
+
+
+
+                            —
+
+
+
+                        </strong>
+
+
+
+                    </div>
+
+
+                    <div>
+
+
+
+                        <span>UTILIZATION</span>
+
+
+
+                        <strong id="utilization">
+
+
+
+                            —
+
+
+
+                        </strong>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="risk-drivers-block">
+
+
+                    <span class="panel-kicker">
+
+
+
+                        RISK DRIVERS
+
+
+
+                    </span>
+
+
+                    <div id="riskDrivers">
+
+
+
+                        <div class="driver">
+
+
+
+                            <span>•</span>
+
+
+
+                            Capacity pressure
+
+
+
+                        </div>
+
+
+                        <div class="driver">
+
+
+
+                            <span>•</span>
+
+
+
+                            Station overload
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+        <!-- ====================================================
+
+
+
+             CONTROL LOOP
+
+
+
+             ==================================================== -->
+
+
+        <section class="control-loop-section panel">
+
+
+            <div class="panel-header">
+
+
+                <div>
+
+
+                    <span class="panel-kicker">
+
+
+
+                        AEGIS CONTROL LOOP
+
+
+
+                    </span>
+
+
+                    <h2>
+
+
+
+                        From signal to measured outcome
+
+
+
+                    </h2>
+
+
+                </div>
+
+
+                <div class="loop-system-id">
+
+
+
+                    CONTROL-LOOP / 01
+
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="control-loop">
+
+
+                <div class="loop-step active">
+
+
+                    <span class="loop-number">01</span>
+
+
+                    <div>
+
+
+
+                        <strong class="loop-title">
+
+
+
+                            SENSE
+
+
+
+                        </strong>
+
+
+                        <span class="loop-description">
+
+
+
+                            Detect disruption
+
+
+
+                        </span>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="loop-connector"></div>
+
+
+                <div class="loop-step active">
+
+
+                    <span class="loop-number">02</span>
+
+
+                    <div>
+
+
+
+                        <strong class="loop-title">
+
+
+
+                            UNDERSTAND
+
+
+
+                        </strong>
+
+
+                        <span class="loop-description">
+
+
+
+                            Assess network risk
+
+
+
+                        </span>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="loop-connector"></div>
+
+
+                <div class="loop-step active">
+
+
+                    <span class="loop-number">03</span>
+
+
+                    <div>
+
+
+
+                        <strong class="loop-title">
+
+
+
+                            SIMULATE
+
+
+
+                        </strong>
+
+
+                        <span class="loop-description">
+
+
+
+                            Evaluate alternatives
+
+
+
+                        </span>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="loop-connector"></div>
+
+
+                <div class="loop-step active">
+
+
+                    <span class="loop-number">04</span>
+
+
+                    <div>
+
+
+
+                        <strong class="loop-title">
+
+
+
+                            DECIDE
+
+
+
+                        </strong>
+
+
+                        <span
+
+
+
+                            class="loop-description"
+
+
+
+                        >
+
+
+
+                            Awaiting strategy
+
+
+
+                        </span>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="loop-connector"></div>
+
+
+                <div class="loop-step review">
+
+
+                    <span class="loop-number">05</span>
+
+
+                    <div>
+
+
+
+                        <strong class="loop-title">
+
+
+
+                            HUMAN REVIEW
+
+
+
+                        </strong>
+
+
+                        <span class="loop-description">
+
+
+
+                            Operator authorization
+
+
+
+                        </span>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="loop-connector"></div>
+
+
+                <div class="loop-step">
+
+
+                    <span class="loop-number">06</span>
+
+
+                    <div>
+
+
+
+                        <strong class="loop-title">
+
+
+
+                            ACT
+
+
+
+                        </strong>
+
+
+                        <span class="loop-description">
+
+
+
+                            Execute intervention
+
+
+
+                        </span>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="loop-connector"></div>
+
+
+                <div class="loop-step">
+
+
+                    <span class="loop-number">07</span>
+
+
+                    <div>
+
+
+
+                        <strong class="loop-title">
+
+
+
+                            MEASURE
+
+
+
+                        </strong>
+
+
+                        <span class="loop-description">
+
+
+
+                            Evaluate outcome
+
+
+
+                        </span>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ====================================================
+
+
+
+             RISK INTELLIGENCE
+
+
+
+             ==================================================== -->
+
+
+        <section class="intelligence-grid">
+
+
+            <article class="risk-intelligence-panel panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+
+                        <span class="panel-kicker">
+
+
+
+                            RISK INTELLIGENCE
+
+
+
+                        </span>
+
+
+                        <h2>
+
+
+
+                            Why is the network at risk?
+
+
+
+                        </h2>
+
+
+                    </div>
+
+
+                    <span class="data-badge">
+
+
+
+                        RISK ENGINE
+
+
+
+                    </span>
+
+
+                </div>
+
+
+                <div class="risk-intelligence-main">
+
+
+                    <div class="risk-score-large">
+
+
+                        <span>
+
+
+
+                            RISK INDEX
+
+
+
+                        </span>
+
+
+                        <strong>
+
+
+
+                            <span id="riskScore">
+
+
+
+                                —
+
+
+
+                            </span>
+
+
+
+                        </strong>
+
+
+                        <small>
+
+
+
+                            Composite operational risk
+
+
+
+                        </small>
+
+
+                    </div>
+
+
+                    <div class="risk-signal-chart">
+
+
+                        <div class="signal-line"></div>
+
+
+                        <div class="signal-label">
+
+
+
+                            NETWORK SIGNAL
+
+
+
+                        </div>
+
+
+                        <div class="signal-axis">
+
+
+
+                            <span>LOW</span>
+
+
+
+                            <span>HIGH</span>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="risk-driver-list">
+
+
+                    <div class="driver-row">
+
+
+                        <div>
+
+
+
+                            <span class="driver-index">
+
+
+
+                                01
+
+
+
+                            </span>
+
+
+                            UTILIZATION
+
+
+
+                        </div>
+
+
+                        <strong>
+
+
+
+                            40%
+
+
+
+                        </strong>
+
+
+                    </div>
+
+
+                    <div class="driver-row">
+
+
+                        <div>
+
+
+
+                            <span class="driver-index">
+
+
+
+                                02
+
+
+
+                            </span>
+
+
+                            OVERLOAD
+
+
+
+                        </div>
+
+
+                        <strong>
+
+
+
+                            25%
+
+
+
+                        </strong>
+
+
+                    </div>
+
+
+                    <div class="driver-row">
+
+
+                        <div>
+
+
+
+                            <span class="driver-index">
+
+
+
+                                03
+
+
+
+                            </span>
+
+
+                            EVENT SEVERITY
+
+
+
+                        </div>
+
+
+                        <strong>
+
+
+
+                            20%
+
+
+
+                        </strong>
+
+
+                    </div>
+
+
+                    <div class="driver-row">
+
+
+                        <div>
+
+
+
+                            <span class="driver-index">
+
+
+
+                                04
+
+
+
+                            </span>
+
+
+                            ROUTE PRESSURE
+
+
+
+                        </div>
+
+
+                        <strong>
+
+
+
+                            15%
+
+
+
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+            <article class="ai-brief-panel panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+
+                        <span class="panel-kicker">
+
+
+
+                            AI INTELLIGENCE
+
+
+
+                        </span>
+
+
+                        <h2>
+
+
+
+                            Operational Brief
+
+
+
+                        </h2>
+
+
+                    </div>
+
+
+                    <span class="ai-badge">
+
+
+
+                        GROUNDED
+
+
+
+                    </span>
+
+
+                </div>
+
+
+                <div class="ai-orb">
+
+
+                    <div class="ai-orb-core">
+
+
+
+                        ✦
+
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="ai-brief-content">
+
+
+                    <p
+
+
+
+                        id="aiSummary"
+
+
+
+                        class="ai-summary"
+
+
+
+                    >
+
+
+
+                        Aegis is analyzing the active
+
+
+
+                        disruption and evaluating downstream
+
+
+
+                        operational impact.
+
+
+
+                    </p>
+
+
+                    <div class="ai-recommendation">
+
+
+                        <span>
+
+
+
+                            RECOMMENDED ACTION
+
+
+
+                        </span>
+
+
+                        <strong id="aiRecommendation">
+
+
+
+                            Awaiting assessment...
+
+
+
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+        <!-- ====================================================
+
+
+
+             COUNTERFACTUAL SIMULATOR
+
+
+
+             ==================================================== -->
+
+
+        <section
+
+
+
+            class="simulation-panel panel"
+
+
+
+        >
+
+
+            <div class="panel-header simulation-header">
+
+
+                <div>
+
+
+                    <span class="panel-kicker">
+
+
+
+                        COUNTERFACTUAL OPERATIONS ENGINE
+
+
+
+                    </span>
+
+
+                    <h2>
+
+
+
+                        What happens if we intervene?
+
+
+
+                    </h2>
+
+
+                    <p>
+
+
+
+                        Aegis evaluates alternative
+
+
+
+                        interventions before any operational
+
+
+
+                        state is changed.
+
+
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="simulation-engine-status">
+
+
+                    <span class="status-dot"></span>
+
+
+                    SIMULATION ENGINE READY
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="simulation-baseline">
+
+
+                <div>
+
+
+                    <span>
+
+
+
+                        CURRENT RISK
+
+
+
+                    </span>
+
+
+                    <strong id="networkRisk">
+
+
+
+                        —
+
+
+
+                    </strong>
+
+
+                </div>
+
+
+                <div class="simulation-arrow">
+
+
+
+                    →
+
+
+
+                </div>
+
+
+                <div>
+
+
+                    <span>
+
+
+
+                        CURRENT UTILIZATION
+
+
+
+                    </span>
+
+
+                    <strong id="networkUtilization">
+
+
+
+                        —
+
+
+
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="scenario-grid">
+
+
+                <article
+
+
+
+                    class="scenario-card"
+
+
+
+                    aria-selected="false"
+
+
+
+                    tabindex="0"
+
+
+
+                >
+
+
+                    <div class="scenario-top">
+
+
+                        <span>
+
+
+
+                            SCENARIO 01
+
+
+
+                        </span>
+
+
+                        <span class="scenario-status">
+
+
+
+                            ALTERNATIVE
+
+
+
+                        </span>
+
+
+                    </div>
+
+
+                    <h3>
+
+
+
+                        ROUTE REBALANCE
+
+
+
+                    </h3>
+
+
+                    <p>
+
+
+
+                        Redistribute route pressure
+
+
+
+                        across the network.
+
+
+
+                    </p>
+
+
+                    <div class="scenario-metric">
+
+
+                        <span>
+
+
+
+                            PROJECTED RISK
+
+
+
+                        </span>
+
+
+                        <strong id="routeRisk">
+
+
+
+                            —
+
+
+
+                        </strong>
+
+
+                    </div>
+
+
+                    <div class="scenario-metric">
+
+
+                        <span>
+
+
+
+                            UTILIZATION
+
+
+
+                        </span>
+
+
+                        <strong id="routeUtilization">
+
+
+
+                            —
+
+
+
+                        </strong>
+
+
+                    </div>
+
+
+                    <div class="scenario-footer">
+
+
+
+                        <span>
+
+
+
+                            ROUTE PRESSURE
+
+
+
+                        </span>
+
+
+                        <span>
+
+
+
+                            →
+
+
+
+                        </span>
+
+
+
+                    </div>
+
+
+                </article>
+
+
+                <article
+
+
+
+                    class="scenario-card"
+
+
+
+                    aria-selected="false"
+
+
+
+                    tabindex="0"
+
+
+
+                >
+
+
+                    <div class="scenario-top">
+
+
+                        <span>
+
+
+
+                            SCENARIO 02
+
+
+
+                        </span>
+
+
+                        <span class="scenario-status">
+
+
+
+                            ALTERNATIVE
+
+
+
+                        </span>
+
+
+                    </div>
+
+
+                    <h3>
+
+
+
+                        CAPACITY SHIFT
+
+
+
+                    </h3>
+
+
+                    <p>
+
+
+
+                        Shift available capacity from
+
+
+
+                        nearby nodes.
+
+
+
+                    </p>
+
+
+                    <div class="scenario-metric">
+
+
+                        <span>
+
+
+
+                            PROJECTED RISK
+
+
+
+                        </span>
+
+
+                        <strong id="capacityRisk">
+
+
+
+                            —
+
+
+
+                        </strong>
+
+
+                    </div>
+
+
+                    <div class="scenario-metric">
+
+
+                        <span>
+
+
+
+                            UTILIZATION
+
+
+
+                        </span>
+
+
+                        <strong id="capacityUtilization">
+
+
+
+                            —
+
+
+
+                        </strong>
+
+
+                    </div>
+
+
+                    <div class="scenario-footer">
+
+
+
+                        <span>
+
+
+
+                            CAPACITY RECOVERY
+
+
+
+                        </span>
+
+
+                        <span>
+
+
+
+                            →
+
+
+
+                        </span>
+
+
+
+                    </div>
+
+
+                </article>
+
+
+                <article
+
+
+
+                    class="scenario-card scenario-primary"
+
+
+
+                    aria-selected="false"
+
+
+
+                    tabindex="0"
+
+
+
+                >
+
+
+                    <div class="scenario-top">
+
+
+                        <span>
+
+
+
+                            SCENARIO 03
+
+
+
+                        </span>
+
+
+                        <span class="scenario-status scenario-recommended">
+
+
+
+                            SYSTEM SELECTED
+
+
+
+                        </span>
+
+
+                    </div>
+
+
+                    <h3>
+
+
+
+                        HYBRID RESPONSE
+
+
+
+                    </h3>
+
+
+                    <p>
+
+
+
+                        Combine capacity recovery with
+
+
+
+                        route redistribution.
+
+
+
+                    </p>
+
+
+                    <div class="scenario-metric">
+
+
+                        <span>
+
+
+
+                            PROJECTED RISK
+
+
+
+                        </span>
+
+
+                        <strong id="hybridRisk">
+
+
+
+                            —
+
+
+
+                        </strong>
+
+
+                    </div>
+
+
+                    <div class="scenario-metric">
+
+
+                        <span>
+
+
+
+                            UTILIZATION
+
+
+
+                        </span>
+
+
+                        <strong id="hybridUtilization">
+
+
+
+                            —
+
+
+
+                        </strong>
+
+
+                    </div>
+
+
+                    <div class="scenario-footer">
+
+
+
+                        <span>
+
+
+
+                            CONSTRAINT OPTIMUM
+
+
+
+                        </span>
+
+
+                        <span>
+
+
+
+                            →
+
+
+
+                        </span>
+
+
+
+                    </div>
+
+
+                </article>
+
+
+            </div>
+
+
+            <div class="decision-score-strip">
+
+
+                <div>
+
+
+
+                    <span>
+
+
+
+                        DECISION SCORE
+
+
+
+                    </span>
+
+
+                    <strong id="decisionScore">
+
+
+
+                        —
+
+
+
+                    </strong>
+
+
+
+                </div>
+
+
+                <div>
+
+
+
+                    <span>
+
+
+
+                        POLICY
+
+
+
+                    </span>
+
+
+                    <strong>
+
+
+
+                        RISK + UTILIZATION + RECOVERY
+
+
+
+                    </strong>
+
+
+
+                </div>
+
+
+                <div>
+
+
+
+                    <span>
+
+
+
+                        CONSTRAINT
+
+
+
+                    </span>
+
+
+                    <strong>
+
+
+
+                        SAFETY / CAPACITY / ROUTES
+
+
+
+                    </strong>
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ====================================================
+
+
+
+             HUMAN APPROVAL CONSOLE
+
+
+
+             app.js injects the live console here
+
+
+
+             ==================================================== -->
+
+
+        <section
+
+
+
+            id="guardianApprovalConsole"
+
+
+
+            class="guardian-approval-console panel"
+
+
+
+        >
+
+
+            <div class="approval-console-header">
+
+
+                <div>
+
+
+                    <span class="approval-console-kicker">
+
+
+
+                        HUMAN DECISION GATE
+
+
+
+                    </span>
+
+
+                    <h2>
+
+
+
+                        Awaiting operational assessment
+
+
+
+                    </h2>
+
+
+                    <p>
+
+
+
+                        Aegis will present a constrained
+
+
+
+                        intervention here before execution.
+
+
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="approval-status-badge">
+
+
+
+                    STANDBY
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ====================================================
+
+
+
+             OUTCOME
+
+
+
+             ==================================================== -->
+
+
+        <section class="outcome-grid panel">
+
+
+            <div class="panel-header">
+
+
+                <div>
+
+
+                    <span class="panel-kicker">
+
+
+
+                        MEASURED OUTCOME
+
+
+
+                    </span>
+
+
+                    <h2>
+
+
+
+                        Prediction → Reality
+
+
+
+                    </h2>
+
+
+                    <p>
+
+
+
+                        Aegis compares counterfactual
+
+
+
+                        projections with measured post-
+
+
+
+                        intervention state.
+
+
+
+                    </p>
+
+
+                </div>
+
+
+                <span class="outcome-status-badge">
+
+
+
+                    AWAITING EXECUTION
+
+
+
+                </span>
+
+
+            </div>
+
+
+            <div class="outcome-comparison">
+
+
+                <div class="outcome-column">
+
+
+                    <span>
+
+
+
+                        BASELINE
+
+
+
+                    </span>
+
+
+                    <strong id="beforeRisk">
+
+
+
+                        —
+
+
+
+                    </strong>
+
+
+                    <small>
+
+
+
+                        RISK INDEX
+
+
+
+                    </small>
+
+
+                </div>
+
+
+                <div class="outcome-arrow">
+
+
+
+                    →
+
+
+
+                </div>
+
+
+                <div class="outcome-column outcome-after">
+
+
+                    <span>
+
+
+
+                        POST-INTERVENTION
+
+
+
+                    </span>
+
+
+                    <strong id="afterRisk">
+
+
+
+                        —
+
+
+
+                    </strong>
+
+
+                    <small>
+
+
+
+                        MEASURED RISK
+
+
+
+                    </small>
+
+
+                </div>
+
+
+                <div class="outcome-column">
+
+
+                    <span>
+
+
+
+                        RISK REDUCTION
+
+
+
+                    </span>
+
+
+                    <strong id="riskReduction">
+
+
+
+                        —
+
+
+
+                    </strong>
+
+
+                    <small>
+
+
+
+                        MEASURED
+
+
+
+                    </small>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="prediction-reality">
+
+
+                <div class="prediction-row header-row">
+
+
+                    <span>METRIC</span>
+
+
+
+                    <span>PREDICTED</span>
+
+
+
+                    <span>ACTUAL</span>
+
+
+
+                    <span>DEVIATION</span>
+
+
+                </div>
+
+
+                <div class="prediction-row">
+
+
+                    <span>RISK</span>
+
+
+
+                    <strong id="predictedRisk">
+
+
+
+                        —
+
+
+
+                    </strong>
+
+
+
+                    <strong id="actualRisk">
+
+
+
+                        —
+
+
+
+                    </strong>
+
+
+
+                    <span id="riskDeviation">
+
+
+
+                        —
+
+
+
+                    </span>
+
+
+                </div>
+
+
+                <div class="prediction-row">
+
+
+                    <span>UTILIZATION</span>
+
+
+
+                    <strong id="predictedUtilization">
+
+
+
+                        —
+
+
+
+                    </strong>
+
+
+
+                    <strong id="actualUtilization">
+
+
+
+                        —
+
+
+
+                    </strong>
+
+
+
+                    <span>
+
+
+
+                        —
+
+
+
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ====================================================
+
+
+
+             AWS CONTROL PLANE
+
+
+
+             ==================================================== -->
+
+
+        <section class="aws-panel panel">
+
+
+            <div class="panel-header">
+
+
+                <div>
+
+
+                    <span class="panel-kicker">
+
+
+
+                        CLOUD CONTROL PLANE
+
+
+
+                    </span>
+
+
+                    <h2>
+
+
+
+                        Aegis on AWS
+
+
+
+                    </h2>
+
+
+                    <p>
+
+
+
+                        Production architecture will replace
+
+
+
+                        local state with durable cloud services.
+
+
+
+                    </p>
+
+
+                </div>
+
+
+                <span class="aws-badge">
+
+
+
+                    AWS READY
+
+
+
+                </span>
+
+
+            </div>
+
+
+            <div class="aws-architecture">
+
+
+                <div class="aws-node">
+
+
+                    <div class="aws-node-icon">
+
+
+
+                        API
+
+
+
+                    </div>
+
+
+                    <strong>
+
+
+
+                        API GATEWAY
+
+
+
+                    </strong>
+
+
+                    <span>
+
+
+
+                        PUBLIC ENTRY
+
+
+
+                    </span>
+
+
+                </div>
+
+
+                <div class="aws-flow">
+
+
+
+                    →
+
+
+
+                </div>
+
+
+                <div class="aws-node">
+
+
+                    <div class="aws-node-icon">
+
+
+
+                        λ
+
+
+
+                    </div>
+
+
+                    <strong>
+
+
+
+                        LAMBDA
+
+
+
+                    </strong>
+
+
+                    <span>
+
+
+
+                        CONTROL PLANE
+
+
+
+                    </span>
+
+
+                </div>
+
+
+                <div class="aws-flow">
+
+
+
+                    →
+
+
+
+                </div>
+
+
+                <div class="aws-node">
+
+
+                    <div class="aws-node-icon">
+
+
+
+                        DB
+
+
+
+                    </div>
+
+
+                    <strong>
+
+
+
+                        DYNAMODB
+
+
+
+                    </strong>
+
+
+                    <span>
+
+
+
+                        STATE
+
+
+
+                    </span>
+
+
+                </div>
+
+
+                <div class="aws-flow">
+
+
+
+                    →
+
+
+
+                </div>
+
+
+                <div class="aws-node">
+
+
+                    <div class="aws-node-icon">
+
+
+
+                        SFN
+
+
+
+                    </div>
+
+
+                    <strong>
+
+
+
+                        STEP FUNCTIONS
+
+
+
+                    </strong>
+
+
+                    <span>
+
+
+
+                        WORKFLOW
+
+
+
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="aws-services">
+
+
+                <div class="aws-service">
+
+
+                    <span class="service-dot pending"></span>
+
+
+                    EVENTBRIDGE
+
+
+                    <small>
+
+
+
+                        EVENT INGESTION
+
+
+
+                    </small>
+
+
+                </div>
+
+
+                <div class="aws-service">
+
+
+                    <span class="service-dot pending"></span>
+
+
+                    BEDROCK
+
+
+                    <small>
+
+
+
+                        AI EXPLANATION
+
+
+
+                    </small>
+
+
+                </div>
+
+
+                <div class="aws-service">
+
+
+                    <span class="service-dot pending"></span>
+
+
+                    S3
+
+
+                    <small>
+
+
+
+                        DATA / ARTIFACTS
+
+
+
+                    </small>
+
+
+                </div>
+
+
+                <div class="aws-service">
+
+
+                    <span class="service-dot pending"></span>
+
+
+                    AMPLIFY
+
+
+                    <small>
+
+
+
+                        FRONTEND
+
+
+
+                    </small>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ====================================================
+
+
+
+             FOOTER
+
+
+
+             ==================================================== -->
+
+
+        <footer class="app-footer">
+
+
+            <div>
+
+
+
+                AEGIS / LAST-MILE OPERATIONS CONTROL TOWER
+
+
+
+            </div>
+
+
+            <div>
+
+
+
+                SYNTHETIC PROTOTYPE DATA
+
+
+
+            </div>
+
+
+            <div>
+
+
+
+                NO AMAZON PROPRIETARY DATA
+
+
+
+            </div>
+
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+<script src="app.js"></script>
+
+
+<script>
+
+
+
+    /*
+
+
+
+     * Premium product-entry transition.
+
+
+
+     *
+
+
+
+     * app.js remains responsible for Aegis's operational logic.
+
+
+
+     * This script only controls the presentation shell.
+
+
+
+     */
+
+
+    const entryScreen =
+
+
+
+        document.getElementById("productEntry");
+
+
+    const guardianApp =
+
+
+
+        document.getElementById("guardianApp");
+
+
+    const enterButton =
+
+
+
+        document.getElementById("enterControlTower");
+
+
+    function enterGuardianOS() {
+
+
+        entryScreen.classList.add(
+
+
+
+            "entry-exit"
+
+
+
+        );
+
+
+        window.setTimeout(
+
+
+
+            () => {
+
+
+                entryScreen.style.display =
+
+
+
+                    "none";
+
+
+                guardianApp.classList.remove(
+
+
+
+                    "is-hidden"
+
+
+
+                );
+
+
+                guardianApp.classList.add(
+
+
+
+                    "app-enter"
+
+
+
+                );
+
+
+            },
+
+
+
+            650
+
+
+
+        );
+
+
+    }
+
+
+    enterButton.addEventListener(
+
+
+
+        "click",
+
+
+
+        enterGuardianOS
+
+
+
+    );
+
+
+    /*
+
+
+
+     * Keyboard shortcut:
+
+
+
+     * Enter opens the control tower.
+
+
+
+     */
+
+
+    document.addEventListener(
+
+
+
+        "keydown",
+
+
+
+        event => {
+
+
+            if (
+
+
+
+                event.key === "Enter" &&
+
+
+
+                entryScreen.style.display !== "none"
+
+
+
+            ) {
+
+
+                enterGuardianOS();
+
+
+            }
+
+
+        }
+
+
+
+    );
+
+
+</script>
+
+
+</body>
+
+
+
+</html>
