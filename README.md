@@ -158,38 +158,20 @@ Prediction deviation is an operational comparison metric in this prototype; it i
 
 ☁️ **AWS Architecture**
 AEGIS is designed as an AWS-integrated serverless control plane.
-              ┌──────────────────┐
-              │   AEGIS FRONTEND │
-              └────────┬─────────┘
-                       │ HTTPS
-                       ▼
-              ┌──────────────────┐
-              │  API GATEWAY     │
-              └────────┬─────────┘
-                       ▼
-              ┌──────────────────┐
-              │  AWS LAMBDA      │
-              │  CONTROL PLANE   │
-              └────────┬─────────┘
-                       │
-          ┌────────────┼────────────┐
-          ▼            ▼            ▼
-     ┌─────────┐ ┌────────────┐ ┌──────────────┐
-     │DynamoDB │ │EventBridge │ │Step Functions│
-     │  STATE  │ │   EVENTS   │ │   WORKFLOW   │
-     └────┬────┘ └─────┬──────┘ └──────┬───────┘
-          │             │               │
-          └─────────────┼───────────────┘
-                        ▼
-                 ┌────────────┐
-                 │     S3     │
-                 │ ARTIFACTS  │
-                 └─────┬──────┘
-                       ▼
-                 ┌────────────┐
-                 │  BEDROCK   │
-                 │     AI     │
-                 └────────────┘
+```mermaid
+flowchart TB
+    A["AEGIS Frontend"] -->|HTTPS| B["Amazon API Gateway"]
+    B --> C["AWS Lambda<br/>Control Plane"]
+
+    C --> D["Amazon DynamoDB<br/>State"]
+    C --> E["Amazon EventBridge<br/>Events"]
+    C --> F["AWS Step Functions<br/>Workflow"]
+
+    D --> G["Amazon S3<br/>Artifacts"]
+    E --> G
+    F --> G
+
+    G --> H["Amazon Bedrock<br/>AI Intelligence"]
                
 **AWS Components**
 AWS Service	Role in AEGIS
