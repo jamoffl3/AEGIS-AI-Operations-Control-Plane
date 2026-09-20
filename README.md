@@ -158,36 +158,39 @@ Prediction deviation is an operational comparison metric in this prototype; it i
 
 ☁️ **AWS Architecture**
 AEGIS is designed as an AWS-integrated serverless control plane.
-                   AEGIS FRONTEND
-                         │
-                         │ HTTPS
-                         ↓
-                ┌──────────────────┐
-                │   API GATEWAY    │
-                └────────┬─────────┘
-                         │
-                         ↓
-                ┌──────────────────┐
-                │      LAMBDA      │
-                │  Control Plane   │
-                └────────┬─────────┘
-                         │
-          ┌──────────────┼──────────────┐
-          │              │              │
-          ↓              ↓              ↓
-    ┌──────────┐   ┌────────────┐  ┌───────────────┐
-    │ DynamoDB │   │ EventBridge│  │Step Functions │
-    │   STATE  │   │   EVENTS   │  │   WORKFLOW    │
-    └──────────┘   └────────────┘  └───────────────┘
-          │              │              │
-          └──────────────┼──────────────┘
-                         │
-               ┌─────────┴─────────┐
-               ↓                   ↓
-          ┌──────────┐       ┌──────────┐
-          │   S3     │       │ Bedrock  │
-          │Artifacts │       │   AI     │
-          └──────────┘       └──────────┘
+              ┌──────────────────┐
+              │   AEGIS FRONTEND │
+              └────────┬─────────┘
+                       │ HTTPS
+                       ▼
+              ┌──────────────────┐
+              │  API GATEWAY     │
+              └────────┬─────────┘
+                       ▼
+              ┌──────────────────┐
+              │  AWS LAMBDA      │
+              │  CONTROL PLANE   │
+              └────────┬─────────┘
+                       │
+          ┌────────────┼────────────┐
+          ▼            ▼            ▼
+     ┌─────────┐ ┌────────────┐ ┌──────────────┐
+     │DynamoDB │ │EventBridge │ │Step Functions│
+     │  STATE  │ │   EVENTS   │ │   WORKFLOW   │
+     └────┬────┘ └─────┬──────┘ └──────┬───────┘
+          │             │               │
+          └─────────────┼───────────────┘
+                        ▼
+                 ┌────────────┐
+                 │     S3     │
+                 │ ARTIFACTS  │
+                 └─────┬──────┘
+                       ▼
+                 ┌────────────┐
+                 │  BEDROCK   │
+                 │     AI     │
+                 └────────────┘
+               
 **AWS Components**
 AWS Service	Role in AEGIS
 Amazon API Gateway	HTTPS API entry point
