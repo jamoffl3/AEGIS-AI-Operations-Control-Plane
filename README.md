@@ -158,8 +158,7 @@ Prediction deviation is an operational comparison metric in this prototype; it i
 
 ☁️ **AWS Architecture**
 AEGIS is designed as an AWS-integrated serverless control plane.
-```mermaid
-flowchart TB
+
     A["AEGIS Frontend"] -->|HTTPS| B["Amazon API Gateway"]
     B --> C["AWS Lambda<br/>Control Plane"]
 
@@ -173,7 +172,7 @@ flowchart TB
 
     G --> H["Amazon Bedrock<br/>AI Intelligence"]
                
-**AWS Components**
+AWS Components
 AWS Service	Role in AEGIS
 Amazon API Gateway	HTTPS API entry point
 AWS Lambda	Serverless control-plane backend
